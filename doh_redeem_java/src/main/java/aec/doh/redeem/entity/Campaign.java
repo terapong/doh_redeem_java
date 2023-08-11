@@ -9,6 +9,7 @@ public class Campaign {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "campaign_id")
 	private long Id;
 	
 	@Column(name = "campaign_name")

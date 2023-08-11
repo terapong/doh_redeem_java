@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="background-color: #f0f1f2;">
 	
 	<!-- Start Navbar -->
 	
-	<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 	  <div class="container-fluid">
 	    <a class="navbar-brand" href="#">DOH Redeem</a>
 	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,7 @@
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="#">Home</a>
+	          <a class="nav-link active" aria-current="page" href="/">Home</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="#">Link</a>
@@ -35,7 +35,44 @@
 	
 	<!-- End Navbar -->
 	
-	<h1>Add</h1>
+	<div class="container p-4">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card-body">
+				
+					<h4 class="text-center text-primary">Add Products Form</h4>
+					
+					<div th:if="${session.msg}">
+						<h5 class="text-center text-success" th:text="${session.msg}"></h5>
+						<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+					</div>
+				
+					<form th:action="@{/save_product}" method="post">
+						<div class="md-3">
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Enter Products Name </label>
+							    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="productName">
+							</div>
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Enter Description </label>
+							    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="description">
+							</div>
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Price </label>
+							    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="price">
+							</div>
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Qunatity </label>
+							    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="quantity">
+							</div>
+							
+							<button type="submit" class="btn btn-primary">Add Products</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
