@@ -1,6 +1,9 @@
 package aec.doh.redeem.entity;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -32,11 +35,15 @@ public class Campaign {
 	
 	@Column(name = "create_timestamp")
 	private Timestamp createTimestamp;
+	
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "campaign_id")
+	private List<CampaignGoodsQty> CampaignGoodsQty = new ArrayList<>();
 
 	public long getId() {
 		return id;
 	}
-
+	
 	public void setId(long id) {
 		this.id = id;
 	}
@@ -95,6 +102,14 @@ public class Campaign {
 
 	public void setCreateTimestamp(Timestamp createTimestamp) {
 		this.createTimestamp = createTimestamp;
+	}
+
+	public List<CampaignGoodsQty> getCampaignGoodsQty() {
+		return CampaignGoodsQty;
+	}
+
+	public void setCampaignGoodsQty(List<CampaignGoodsQty> campaignGoodsQty) {
+		CampaignGoodsQty = campaignGoodsQty;
 	}
 
 }
