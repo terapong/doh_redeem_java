@@ -12,30 +12,26 @@
 						<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
 					</div>
 					<div class="card-header">
-						<a href="load_form" class="btn btn-primary">Add Products</a>
+						<a href="campaign_load_form_add" class="btn btn-primary">Add campaig</a>
 					</div>
 					<div class="card-bady">
 						<table class="table">
 							<thead>
 								<tr>
-									<th scope="col">Id</th>
-									<th scope="col">Name</th>
-									<th scope="col">Description</th>
-									<th scope="col">Price</th>
-									<th scope="col">Quantity</th>
+									<th scope="col">campaign_id</th>
+									<th scope="col">campaign_name</th>
+									<th scope="col">create_dtm</th>
 									<th scope="col">Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr th:each="p : ${all_products}">
+								<tr th:each="p : ${all_campaign}">
 									<th scope="row">[[${p.id}]]</th>
-									<td>[[${p.productName}]]</td>
-									<td>[[${p.description}]]</td>
-									<td>[[${p.price}]]</td>
-									<td>[[${p.quantity}]]</td>
+									<td>[[${p.campaignName}]]</td>
+									<td>[[${p.startDate}]]</td>
 									<td>
-										<a th:href="@{'/edit_form/'+${p.id}}" class="btn btn-sm btn-primary">Edit</a>
-										<a th:href="@{'/delete/'+${p.id}}" class="btn btn-sm btn-danger">Delete</a>
+										<a th:href="@{'/campaign_type_load_form_edit/'+${p.id}}" class="btn btn-sm btn-primary">Edit</a>
+										<a th:href="@{'/delete_campaign_type/'+${p.id}}" class="btn btn-sm btn-danger">Delete</a>
 									</td>
 								</tr>							
 							</tbody>

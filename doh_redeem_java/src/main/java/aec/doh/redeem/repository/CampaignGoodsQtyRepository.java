@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import aec.doh.redeem.entity.*;
 
-public interface CampaignGoodsQtyRepository extends JpaRepository<Campaign, Long> {
+public interface CampaignGoodsQtyRepository extends JpaRepository<CampaignGoodsQty, Long> {
 
 }

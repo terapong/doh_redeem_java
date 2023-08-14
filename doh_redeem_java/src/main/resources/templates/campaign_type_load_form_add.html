@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments :: html_head" />
+<body style="background-color: #f0f1f2;">
+	<div th:replace = "fragments :: menu"></div>
+	<div class="container p-4">
+		<div class="row">
+			<div class="col-md-6 offset-md-3">
+				<div class="card-body">
+				
+					<h4 class="text-center text-primary">Add campaign type form.</h4>
+					
+					<div th:if="${session.msg}">
+						<h5 class="text-center text-success" th:text="${session.msg}"></h5>
+						<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+					</div>
+				
+					<form th:action="@{/save_campaign_type}" method="post">
+						<div class="md-3">
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Enter Campaing Name </label>
+							    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="campaignTypeName">
+							</div>
+							<div class="mb-3">
+							    <label for="exampleInputEmail1" class="form-label">Enter status </label>
+							    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="recordStatus">
+							</div>
+														
+							<button type="submit" class="btn btn-primary">Add campaign type</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace = "fragments :: footer"></div>
+</body>
+</html>
