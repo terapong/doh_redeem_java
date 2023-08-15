@@ -209,12 +209,14 @@ public class DohRedeemController {
 	@GetMapping("/campaign")
 	public String campaign(Model m) {
 		List<Campaign> list = campaignRepo.findAll();
-		m.addAttribute("all_campaign", list);
+		m.addAttribute("all_campaign", list); //ส่ง list all_campaign ไปที่ หน้า web วิธีใช้ <th scope="row">[[${p.id}]]</th>
 		return "campaign";
 	}
 	
 	@GetMapping("/campaign_load_form_add")
-	public String campaignLoadForm() {
+	public String campaignLoadForm(Model m) {
+		List<CampaignType> campaignType = campaignTypeRepo.findAll();
+		m.addAttribute("all_campaign_type", campaignType);
 		return "campaign_load_form_add";
 	}
 	
@@ -222,7 +224,19 @@ public class DohRedeemController {
 	@GetMapping("/campaign_goods_qtys")
 	public String campaignGoodsQtys(Model m) {
 		List<CampaignGoodsQty> list = campaignGoodsQtyReo.findAll();
-		m.addAttribute("all_campaign_goods_qtys", list);
+		m.addAttribute("all_campaign_goods_qtys", list); //ส่ง list all_campaign_goods_qtys ไปที่ หน้า web
 		return "campaign_goods_qtys";
+	}
+	
+	@GetMapping("/campaign_goods_qty_load_form_add")
+	public String campaignGoodsQtysLoadForm(Model m) {
+		List<Campaign> campaign = campaignRepo.findAll();
+		List<CampaignType> campaignType = campaignTypeRepo.findAll();
+		List<CampaignGoods> campaignGoodsd = campaignGoodsRepo.findAll();
+		
+		m.addAttribute("all_campaign", campaign);
+		m.addAttribute("all_campaign_type", campaignType);
+		m.addAttribute("all_campaign_goods", campaignGoodsd);
+		return "campaign_goods_qty_load_form_add";
 	}
 }

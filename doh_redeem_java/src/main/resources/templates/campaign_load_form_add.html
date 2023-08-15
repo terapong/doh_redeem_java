@@ -16,27 +16,103 @@
 					</div>
 				
 					<form th:action="@{/save_campaign_type}" method="post">
-						<div class="md-3">
-							<div class="mb-3">
-							    <label for="exampleInputEmail1" class="form-label">Enter Campaing Name </label>
-							    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="campaignName">
+						<div class="container">
+							<div class = "row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">campaign_name </label>
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="campaignName">
+								</div>
 							</div>
-							<div class="mb-3">
-							    <label for="exampleInputEmail1" class="form-label">Enter Campaing dtm </label>
-							    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="startDate">
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">create_dtm</label>
+								</div>
+								<div class="col">
+				                    <div class="input-group date" id="datepicker1">
+				                        <input type="text" class="form-control">
+				                        <span class="input-group-append">
+				                            <span class="input-group-text bg-white d-block">
+				                                <i class="fa fa-calendar"></i>
+				                            </span>
+				                        </span>
+				                    </div>
+								</div>
 							</div>
-							<div class="mb-3">
-							    <label for="exampleInputEmail1" class="form-label">Enter create timestamp </label>
-							    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="endDate">
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">create_timestamp</label>
+								</div>
+								<div class="col">
+				                    <div class="input-group date" id="datepicker2">
+				                        <input type="text" class="form-control">
+				                        <span class="input-group-append">
+				                            <span class="input-group-text bg-white d-block">
+				                                <i class="fa fa-calendar"></i>
+				                            </span>
+				                        </span>
+				                    </div>
+								</div>
 							</div>
-							<div class="mb-3">
-							
-							
-								
-    
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">create_user_id </label>
+								</div>
+								<div class="col">
+									<input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="campaignName">
+								</div>
 							</div>
-														
-							<button type="submit" class="btn btn-primary">Add campaign </button>
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">end_date</label>
+								</div>
+								<div class="col">
+				                    <div class="input-group date" id="datepicker3">
+				                        <input type="text" class="form-control">
+				                        <span class="input-group-append">
+				                            <span class="input-group-text bg-white d-block">
+				                                <i class="fa fa-calendar"></i>
+				                            </span>
+				                        </span>
+				                    </div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">record_status </label>
+								</div>
+								<div class="col">
+									<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="recordStatus">
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">start_date</label>
+								</div>
+								<div class="col">
+				                    <div class="input-group date" id="datepicker4">
+				                        <input type="text" class="form-control">
+				                        <span class="input-group-append">
+				                            <span class="input-group-text bg-white d-block">
+				                                <i class="fa fa-calendar"></i>
+				                            </span>
+				                        </span>
+				                    </div>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col">
+									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">campaign_type </label>
+								</div>
+								<div class="col">
+										<select name="select_box" class="form-select" id="select_box">
+											<option th:each="p : ${all_campaign_type}" value="">[[${p.campaignTypeName}]]</option>
+										</select>
+										
+										
+								</div>
+							</div> 	
 						</div>
 					</form>
 				</div>
@@ -44,5 +120,15 @@
 		</div>
 	</div>
 	<div th:replace = "fragments :: footer"></div>
+	
+<script type="text/javascript">
+        $(function() {
+            $('#datepicker1').datepicker();
+            $('#datepicker2').datepicker();
+            $('#datepicker3').datepicker();
+            $('#datepicker4').datepicker();
+        });
+    </script>
+	
 </body>
 </html>
