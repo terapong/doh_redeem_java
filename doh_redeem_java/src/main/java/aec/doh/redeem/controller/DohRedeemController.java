@@ -267,10 +267,40 @@ public class DohRedeemController {
 	}
 	
 	@GetMapping("/campaign_load_form_add")
-	public String campaignLoadForm(Model m) {
+	public String campaignLoadFormAdd(Model m) {
 		List<CampaignType> campaignType = campaignTypeRepo.findAll();
 		m.addAttribute("all_campaign_type", campaignType);
 		return "campaign_load_form_add";
+	}
+	
+	@PostMapping("/save_campaign")
+	public String saveCampaign(@ModelAttribute Campaign campaign, HttpSession session) {
+		campaignRepo.save(campaign);
+		session.setAttribute("msg", "campaign Added Sucessfully..");
+		//return "redirect:/campaign_type_load_form_add";
+		return "redirect:/campaign";
+	}
+	
+	@GetMapping("/campaign_load_form_edit/{id}")
+	public String campaignLoadFormEdit(@PathVariable(value = "id") long id, Model m) {
+		Optional<Campaign> campaign = campaignRepo.findById(id);
+		Campaign pro = campaign.get();
+		m.addAttribute("campaign", pro);
+		return "campaign_load_form_edit";
+	}
+	
+	@PostMapping("/update_campaign")
+	public String updateCampaign(@ModelAttribute Campaign campaign, HttpSession session) {
+		campaignRepo.save(campaign);
+		session.setAttribute("msg", "Campaign Update Sucessfully..");
+		return "redirect:/campaign";
+	}
+	
+	@GetMapping("/delete_campaign/{id}")
+	public String DeleteCampaign(@PathVariable(value = "id") long id, HttpSession session) {
+		campaignRepo.deleteById(id);
+		session.setAttribute("msg", "Campaign Delete Sucessfully..");
+		return "redirect:/campaign";
 	}
 	 
 }
