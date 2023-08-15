@@ -8,14 +8,14 @@
 			<div class="col-md-6 offset-md-3">
 				<div class="card-body">
 				
-					<h4 class="text-center text-primary">Add campaign goods qty form.</h4>
+					<h4 class="text-center text-primary">Edit campaign goods qty form.</h4>
 					
 					<div th:if="${session.msg}">
 						<h5 class="text-center text-success" th:text="${session.msg}"></h5>
 						<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
 					</div>
 				
-					<form th:action="@{/save_campaign_goods_qty}" method="post">
+					<form th:action="@{/update_campaign_goods_qty}" method="post">
 						<div class="container">
 							<div class="row form-group">
 								<div class="col">
@@ -52,11 +52,11 @@
 									<label for="exampleInputEmail1" class="col-sm-1 col-form-label">Qty </label>
 								</div>
 								<div class="col">
-									<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="qty">
+									<input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="qty" th:value="${campaignGoodsQty.qty}">
 								</div>
 							</div>
 							
-							<button type="submit" class="btn btn-primary">Add campaign goods qty</button>
+							<button type="submit" class="btn btn-primary">Edit campaign goods qty</button>
 							
 						</div>
 					</form>

@@ -239,4 +239,38 @@ public class DohRedeemController {
 		m.addAttribute("all_campaign_goods", campaignGoodsd);
 		return "campaign_goods_qty_load_form_add";
 	}
+	
+	@PostMapping("/save_campaign_goods_qty")
+	public String saveCampaignGoodsQty(@ModelAttribute CampaignGoodsQty campaignGoodsQty, HttpSession session) {
+		campaignGoodsQtyReo.save(campaignGoodsQty);
+		session.setAttribute("msg", "campaign goods qty Added Sucessfully..");
+		//return "redirect:/campaign_type_load_form_add";
+		return "redirect:/campaign_goods_qtys";
+	}
+	
+	
+	@GetMapping("/campaign_goods_qty_load_form_edit/{id}")
+	public String campaignGoodsQtyLoadFormEdit(@PathVariable(value = "id") long id, Model m) {
+		Optional<CampaignGoodsQty> campaignGoodsQty = campaignGoodsQtyReo.findById(id);
+		CampaignGoodsQty pro = campaignGoodsQty.get();
+		m.addAttribute("campaignGoodsQty", pro);
+		return "campaign_goods_qty_load_form_edit";
+	}
+	
+	
+	@PostMapping("/update_campaign_goods_qty")
+	public String updateCampaignType(@ModelAttribute CampaignGoodsQty campaignGoodsQty, HttpSession session) {
+		campaignGoodsQtyReo.save(campaignGoodsQty);
+		session.setAttribute("msg", "Campaign goods qty Update Sucessfully..");
+		return "redirect:/campaign_type";
+	}
+
+	
+	@GetMapping("/delete_campaign_goods_qty/{id}")
+	public String DeleteCampaignGoodsQty(@PathVariable(value = "id") long id, HttpSession session) {
+		campaignGoodsQtyReo.deleteById(id);
+		session.setAttribute("msg", "Campaign goods qty Delete Sucessfully..");
+		return "redirect:/campaign_goods_qtys";
+	}
+	 
 }
