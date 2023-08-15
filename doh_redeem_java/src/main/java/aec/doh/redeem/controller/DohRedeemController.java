@@ -31,6 +31,9 @@ public class DohRedeemController {
 	private CampaignHealthRegionRepository campaignHealthRegionRepo;
 	
 	@Autowired
+	private CampaignGoodsQtyRepository campaignGoodsQtyReo;
+	
+	@Autowired
 	private CampaignRepository campaignRepo;
 	
 	@GetMapping("/")
@@ -213,5 +216,13 @@ public class DohRedeemController {
 	@GetMapping("/campaign_load_form_add")
 	public String campaignLoadForm() {
 		return "campaign_load_form_add";
+	}
+	
+	///campaign_goods_qtys
+	@GetMapping("/campaign_goods_qtys")
+	public String campaignGoodsQtys(Model m) {
+		List<CampaignGoodsQty> list = campaignGoodsQtyReo.findAll();
+		m.addAttribute("all_campaign_goods_qtys", list);
+		return "campaign_goods_qtys";
 	}
 }

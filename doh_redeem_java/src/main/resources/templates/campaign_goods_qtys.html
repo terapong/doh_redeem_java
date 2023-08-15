@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace = "fragments :: html_head" />
+<body style="background-color: #f0f1f2;">
+	<div th:replace = "fragments :: menu"></div>
+	<div class="container p-5">
+		<div class="row">
+			<div class="col-md-8 offset-md-2">
+				<div class="card">
+					<div th:if="${session.msg}">
+						<h5 class="text-center text-success" th:text="${session.msg}"></h5>
+						<!-- <th:block th:text="${#session.removeAttribute('msg')}"></th:block> -->
+					</div>
+					<div class="card-header">
+						<a href="campaign_goods_load_form_add" class="btn btn-primary">Add campaign goods qtys</a>
+					</div>
+					<div class="card-bady">
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col">campaign_goods_qtys_id</th>
+									<th scope="col">qty</th>
+									<th scope="col">Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="p : ${all_campaign_goods_qtys}">
+									<th scope="row">[[${p.id}]]</th>
+									<td>[[${p.qty}]]</td>
+									<td>
+										<a th:href="@{'/campaign_goods_load_form_edit/'+${p.id}}" class="btn btn-sm btn-primary">Edit</a>
+										<a th:href="@{'/delete_campaign_goods/'+${p.id}}" class="btn btn-sm btn-danger">Delete</a>
+									</td>
+								</tr>							
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div th:replace = "fragments :: footer"></div>
+</body>
+</html>
